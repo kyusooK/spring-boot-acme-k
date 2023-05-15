@@ -4,6 +4,8 @@ path: {{boundedContext.name}}/{{{options.packagePath}}}/domain
 ---
 package {{options.package}}.domain;
 
+import java.util.List;
+
 import {{options.package}}.domain.*;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
