@@ -4,7 +4,7 @@ path: {{boundedContext.name}}/{{{options.packagePath}}}/domain
 ---
 package {{options.package}}.domain;
 
-import java.util.List;
+{{#contexts.views}}import java.util.List;{{/contexts.views}}
 
 import {{options.package}}.domain.*;
 import org.springframework.data.repository.PagingAndSortingRepository;
