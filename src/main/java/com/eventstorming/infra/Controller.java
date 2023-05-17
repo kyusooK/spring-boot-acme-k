@@ -111,7 +111,7 @@ public class {{ namePascalCase }}Controller {
     {{/if}}
     {{/each}}
     {{/if}}
-    {{#contexts.views}}@PutMapping("/{{namePlural}}/search/{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}")
+    {{#contexts.views}}@PutMapping("/{{#aggregate}}{{namePlural}}{{/aggregate}}/search/{{#queryOption}}{{apiPath}}{{/queryOption}}")
     public Object {{#queryOption}}{{apiPath}}{{/queryOption}}(@RequestBody {{namePascalCase}}Query query){
         return {{#aggregate}}{{nameCamelCase}}{{/aggregate}}Repository.{{#queryOption}}{{apiPath}}{{/queryOption}}({{#queryParameters}}query.get{{namePascalCase}}(){{^@last}},{{/@last}}{{/queryParameters}});{{/contexts.views}}
     }
