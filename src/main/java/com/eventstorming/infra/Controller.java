@@ -25,7 +25,6 @@ import javax.transaction.Transactional;
 public class {{ namePascalCase }}Controller {
     @Autowired
     {{namePascalCase}}Repository {{nameCamelCase}}Repository;
-
     {{#if (checkGeneralization aggregateRoot.entities.relations nameCamelCase)}}
     {{#each aggregateRoot.entities.relations}}
     {{#if (isGeneralization targetElement.namePascalCase ../namePascalCase relationType)}}
@@ -34,11 +33,9 @@ public class {{ namePascalCase }}Controller {
     {{/if}}
     {{/each}}
     {{/if}}
-
     {{#commands}}
     {{#isRestRepository}}
     {{/isRestRepository}}
-
     {{^isRestRepository}}
     {{#checkMethod controllerInfo.method}}
     @RequestMapping(value = "{{../namePlural}}/{id}/{{controllerInfo.apiPath}}",
