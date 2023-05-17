@@ -13,7 +13,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel="{{namePlural}}", path="{{namePlural}}")
 public interface {{namePascalCase}}Repository extends PagingAndSortingRepository<{{namePascalCase}}, {{aggregateRoot.keyFieldDescriptor.className}}>{
-  {{#if contexts.views}}List<{{namePascalCase}}> {{/contexts.views}}{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}({{#contexts.views}}{{#queryParameters}}{{className}} {{nameCamelCase}}{{^@last}}, {{/@last}}{{/queryParameters}}{{/contexts.views}});
+  {{#if readModels}List<{{namePascalCase}}> {{/readModels}}{{#contexts.views}}{{#queryOption}}{{apiPath}}{{/queryOption}}{{/contexts.views}}({{#contexts.views}}{{#queryParameters}}{{className}} {{nameCamelCase}}{{^@last}}, {{/@last}}{{/queryParameters}}{{/contexts.views}});
 }
 //>>> PoEAA / Repository
 <function>
