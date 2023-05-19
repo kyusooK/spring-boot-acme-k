@@ -259,8 +259,8 @@ window.$HandleBars.registerHelper('checkBigDecimal', function (fieldDescriptors)
 window.$HandleBars.registerHelper('checkAttribute', function (isOverrideField) {
     if(isOverrideField){
         var overrides = `@AttributeOverride(name="id", column= @Column(name="id", nullable=true))\n`;
-        console.log(overrides);
     }
+    return overrides
 });
 window.$HandleBars.registerHelper('isPrimitive', function (className) {
     if(className.includes("String") || className.includes("Integer") || className.includes("Long") || className.includes("Double") || className.includes("Float")
