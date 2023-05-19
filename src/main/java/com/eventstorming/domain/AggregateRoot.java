@@ -257,7 +257,7 @@ window.$HandleBars.registerHelper('checkBigDecimal', function (fieldDescriptors)
 // });
 window.$HandleBars.registerHelper('checkAttribute', function (isOverrideField) {
     if(isOverrideField){
-        var overrides = `@AttributeOverride(name="id", column= @Column(name="${name}", nullable=true))\n`;
+       {{#if referenceClass}} var overrides = `@AttributeOverride(name="id", column= @Column(name="${nameCamelCase}", nullable=true))\n`; {{/if}}
     }
     return overrides
 });
