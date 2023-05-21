@@ -27,6 +27,7 @@ spring:
     properties:
       hibernate:
         implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         show_sql: true
         format_sql: true
   kafka:
