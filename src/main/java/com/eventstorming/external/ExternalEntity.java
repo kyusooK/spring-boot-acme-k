@@ -53,6 +53,7 @@
 
 
 forEach: Relation
+{{#if isOverrideField}}
 fileName: {{target.aggregate.namePascalCase}}.java
 path: {{boundedContext.name}}/{{{options.packagePath}}}/external
 except: {{contexts.except}}
@@ -70,6 +71,8 @@ public class {{namePascalCase}} {
     {{/aggregateRoot.fieldDescriptors}}
 }
 {{/target.aggregate}}
+{{/if}}
+
 
 
 
