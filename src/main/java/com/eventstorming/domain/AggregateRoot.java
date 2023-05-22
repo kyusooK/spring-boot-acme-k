@@ -31,7 +31,6 @@ public class {{namePascalCase}} {{#checkExtends aggregateRoot.entities.relations
     @GeneratedValue(strategy=GenerationType.AUTO)
     {{/isKey}}{{/isVO}}{{#isLob}}@Lob{{/isLob}}
     {{#if (isPrimitive className)}}{{#isList}}{{/isList}}{{/if}}
-    {{#checkAttribute ../aggregateRoot.entities.relations ../name className isVO}}{{/checkAttribute}}
     private {{{className}}} {{nameCamelCase}};{{/aggregateRoot.fieldDescriptors}}
 
 {{#contexts.eventsPerLifecycle}}
@@ -201,57 +200,57 @@ window.$HandleBars.registerHelper('checkBigDecimal', function (fieldDescriptors)
     }
 });
 
-window.$HandleBars.registerHelper('checkAttribute', function (relations, source, target, isVO) {
-   try {
-       if(typeof relations === "undefined"){
-        return;
-        }
+// window.$HandleBars.registerHelper('checkAttribute', function (relations, source, target, isVO) {
+//    try {
+//        if(typeof relations === "undefined"){
+//         return;
+//         }
 
-        if(!isVO){
-            return;
-        }
+//         if(!isVO){
+//             return;
+//         }
 
-        var sourceObj = [];
-        var targetObj = [];
-        var sourceTmp = {};
-        var targetName = null;
-        for(var i = 0 ; i<relations.length; i++){
-            if(relations[i] != null){
-                if(relations[i].sourceElement.name == source){
-                    sourceTmp = relations[i].sourceElement;
-                    sourceObj = relations[i].sourceElement.fieldDescriptors;
-                }
-                if(relations[i].targetElement.name == target){
-                    targetObj = relations[i].targetElement.fieldDescriptors;
-                    targetName = relations[i].targetElement.nameCamelCase;
-                }
-            }
-        }
+//         var sourceObj = [];
+//         var targetObj = [];
+//         var sourceTmp = {};
+//         var targetName = null;
+//         for(var i = 0 ; i<relations.length; i++){
+//             if(relations[i] != null){
+//                 if(relations[i].sourceElement.name == source){
+//                     sourceTmp = relations[i].sourceElement;
+//                     sourceObj = relations[i].sourceElement.fieldDescriptors;
+//                 }
+//                 if(relations[i].targetElement.name == target){
+//                     targetObj = relations[i].targetElement.fieldDescriptors;
+//                     targetName = relations[i].targetElement.nameCamelCase;
+//                 }
+//             }
+//         }
 
-        var samePascal = [];
-        var sameCamel = [];
-        for(var i = 0; i<sourceObj.length; i++){
-            for(var j =0; j<targetObj.length; j++){
-                if(sourceObj[i].name == targetObj[j].name){
-                    samePascal.push(sourceObj[i].namePascalCase);
-                    sameCamel.push(sourceObj[i].nameCamelCase);
-                }
-            }
-        }
+//         var samePascal = [];
+//         var sameCamel = [];
+//         for(var i = 0; i<sourceObj.length; i++){
+//             for(var j =0; j<targetObj.length; j++){
+//                 if(sourceObj[i].name == targetObj[j].name){
+//                     samePascal.push(sourceObj[i].namePascalCase);
+//                     sameCamel.push(sourceObj[i].nameCamelCase);
+//                 }
+//             }
+//         }
 
-        var attributeOverrides = "";
-        for(var i =0; i<samePascal.length; i++){
-            var camel = sameCamel[i];
-            var pascal = samePascal[i];
-            var overrides = `@AttributeOverride(name="${camel}", column= @Column(name="${targetName}", nullable=true))\n`;
-            attributeOverrides += overrides;
-        }
+//         var attributeOverrides = "";
+//         for(var i =0; i<samePascal.length; i++){
+//             var camel = sameCamel[i];
+//             var pascal = samePascal[i];
+//             var overrides = `@AttributeOverride(name="${camel}", column= @Column(name="${targetName}", nullable=true))\n`;
+//             attributeOverrides += overrides;
+//         }
 
-        return attributeOverrides;
-    } catch (e) {
-       console.log(e)
-    }
-});
+//         return attributeOverrides;
+//     } catch (e) {
+//        console.log(e)
+//     }
+// });
 window.$HandleBars.registerHelper('checkAttribute', function (isOverrideField) {
     if(isOverrideField){
         var overrides = `@AttributeOverride(name="id", column= @Column(name= "id", nullable=true))\n`; 
