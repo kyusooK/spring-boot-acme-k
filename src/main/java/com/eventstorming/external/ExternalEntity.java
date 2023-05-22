@@ -53,7 +53,6 @@
 
 
 forEach: Relation
-{{#if isOverrideField}}
 fileName: {{target.aggregate.namePascalCase}}.java
 path: {{boundedContext.name}}/{{{options.packagePath}}}/external
 except: {{contexts.except}}
@@ -71,14 +70,12 @@ public class {{namePascalCase}} {
     {{/aggregateRoot.fieldDescriptors}}
 }
 {{/target.aggregate}}
-{{/if}}
-
 
 
 
 <function>
     let isGetInvocation = ((this.source._type.endsWith("Command") || this.source._type.endsWith("Policy")) && (this.target._type.endsWith("View") || this.target._type.endsWith("Aggregate")))
-    let isPostInvcation = ((this.source._type.endsWith("Event") || this.source._type.endsWith("Policy")) && this.target._type.endsWith("Command"))
+    let isPostInvcation = ((this.source._type.endsWith("Event") || this.source._type.endsWith("Policy")) && (this.target._type.endsWith("Command") || this.target._type.endsWith("Aggregate")))
     let isExternalInvocation = (this.source.boundedContext.name != this.target.boundedContext.name)
 
     this.contexts.except = !(isExternalInvocation && (isGetInvocation || isPostInvocation))
