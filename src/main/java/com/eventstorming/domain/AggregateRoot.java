@@ -276,8 +276,6 @@ window.$HandleBars.registerHelper('checkRelations', function (relations, classNa
                 if(isVO) {
                     if(className.includes("List")) {
                         return "@ElementCollection"
-                    } else {
-                        return "@Embedded"
                     }
                 } else {
                     for(var i = 0; i < relations.length; i ++ ) {
