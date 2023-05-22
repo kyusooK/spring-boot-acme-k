@@ -28,10 +28,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-        naming:
-          {{#if isOverrideField}}
-          implicit-strategy: org.hibernate.boot.domain.naming.ImplicitNamingStrategyDomainImpl
-          {{/if}}
+          implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
   kafka:
     producer:
       retries: 5

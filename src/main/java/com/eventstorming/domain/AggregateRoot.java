@@ -31,6 +31,7 @@ public class {{namePascalCase}} {{#checkExtends aggregateRoot.entities.relations
     @GeneratedValue(strategy=GenerationType.AUTO)
     {{/isKey}}{{/isVO}}{{#isLob}}@Lob{{/isLob}}
     {{#if (isPrimitive className)}}{{#isList}}{{/isList}}{{/if}}
+    {{#checkRelations ../aggregateRoot.entities.relations className isVO referenceClass isList}}{{/checkRelations}}
     private {{{className}}} {{nameCamelCase}};{{/aggregateRoot.fieldDescriptors}}
 
 {{#contexts.eventsPerLifecycle}}
