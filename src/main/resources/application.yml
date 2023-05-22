@@ -29,7 +29,7 @@ spring:
         show_sql: true
         format_sql: true
         naming:
-          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyDomainImpl
+          implicit-strategy: org.hibernate.boot.domain.naming.ImplicitNamingStrategyDomainImpl
   kafka:
     producer:
       retries: 5
