@@ -16,7 +16,6 @@ import java.util.List;
 import lombok.Data;
 import java.util.Date;
 import org.springframework.context.ApplicationContext;
-import yaml.application.yaml;
 
 @Entity
 @Table(name="{{namePascalCase}}_table")
