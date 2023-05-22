@@ -31,7 +31,6 @@ public class {{namePascalCase}} {{#checkExtends aggregateRoot.entities.relations
     @GeneratedValue(strategy=GenerationType.AUTO)
     {{/isKey}}{{/isVO}}{{#isLob}}@Lob{{/isLob}}
     {{#if (isPrimitive className)}}{{#isList}}{{/isList}}{{/if}}
-    {{#if isOverrideField}}@AttributeOverride(name="id", column= @Column(name= "{{nameCamelCase}}", nullable=true)){{/if}} 
     private {{{className}}} {{nameCamelCase}};{{/aggregateRoot.fieldDescriptors}}
 
 {{#contexts.eventsPerLifecycle}}
@@ -277,6 +276,8 @@ window.$HandleBars.registerHelper('checkRelations', function (relations, classNa
                 if(isVO) {
                     if(className.includes("List")) {
                         return "@ElementCollection"
+                    } else {
+                        return "@Embedded"
                     }
                 } else {
                     for(var i = 0; i < relations.length; i ++ ) {
